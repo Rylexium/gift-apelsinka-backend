@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.gift_apelsinka</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>gift-apelsinka</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>gift-apelsinka</name>
 	<description>gift-apelsinka</description>
