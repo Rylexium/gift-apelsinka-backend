@@ -13,8 +13,8 @@ import java.util.HashMap;
 public class MessageService {
     private final MessageRepository messageRepository;
 
-    public HashMap<String, String> saveMessage(String message) {
-        messageRepository.save(new Message(message));
+    public HashMap<String, String> saveMessage(String ip, Integer who, Integer toWhom, String text) {
+        messageRepository.save(new Message(ip, who, toWhom, text));
         return new HashMap<>() {{ put("status", "successful"); }};
     }
 }

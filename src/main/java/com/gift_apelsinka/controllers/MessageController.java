@@ -20,6 +20,6 @@ public class MessageController {
 
     @PostMapping("message")
     public HashMap<String, String> saveMessage(@RequestBody RequestMessage request) {
-        return messageService.saveMessage(request.getMessage());
+        return messageService.saveMessage(request.getIp(), request.getWho(), request.getToWhom(), request.getText());
     }
 }

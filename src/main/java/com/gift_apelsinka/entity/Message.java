@@ -10,14 +10,22 @@ import java.util.Date;
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
+    private String ip;
+    private Integer who;
+    private Integer toWhom;
     private String text;
+    private Boolean status = false;
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
-    public Message(String message) {
-        this.text = message;
+    public Message(String ip, Integer who, Integer toWhom, String text) {
+        this.ip = ip;
+        this.who = who;
+        this.toWhom = toWhom;
+        this.text = text;
     }
+
     @PrePersist
     @PreUpdate
     private void onCreateOrUpdate() {

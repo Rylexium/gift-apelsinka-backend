@@ -4,5 +4,8 @@ import lombok.Data;
 
 @Data
 public class RequestMessage {
-    private String message;
+    private String ip;
+    private Integer who;
+    private Integer toWhom;
+    private String text;
 }

@@ -13,4 +13,5 @@ public class Notifications {
     private String title;
     private String text;
     private String image;
+    private Long time;
 }
