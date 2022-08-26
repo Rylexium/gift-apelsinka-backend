@@ -1,10 +1,9 @@
 package com.gift_apelsinka.controllers;
 
+import com.gift_apelsinka.model.request.RequestChangeStatusNotification;
 import com.gift_apelsinka.service.NotificationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 
@@ -19,4 +18,10 @@ public class NotificationsController {
     public HashMap<String, Object> getNotifications() {
         return notificationService.getNotification();
     }
+
+    @PostMapping("notifications")
+    public HashMap<String, String> setStatusNotifications(@RequestBody RequestChangeStatusNotification request) {
+        return notificationService.setNotificationsStatus(request.getId());
+    }
+
 }

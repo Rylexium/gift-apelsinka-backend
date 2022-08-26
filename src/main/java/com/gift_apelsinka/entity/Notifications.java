@@ -13,5 +13,6 @@ public class Notifications {
     private String title;
     private String text;
     private String image;
+    private Boolean status;
     private Long time;
 }

@@ -19,4 +19,16 @@ public class NotificationService {
             }
         };
     }
+    public HashMap<String, String> setNotificationsStatus(Integer id) {
+        Notifications notification = notificationsRepository.findById(id).orElse(null);
+        if(notification != null){
+            notification.setStatus(true);
+            notificationsRepository.save(notification);
+        }
+        return new HashMap<>() {
+            {
+                put("status", "successfully");
+            }
+        };
+    }
 }
