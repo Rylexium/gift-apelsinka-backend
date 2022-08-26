@@ -15,7 +15,7 @@ public class NotificationService {
     public HashMap<String, Object> getNotification() {
         return new HashMap<>() {
             {
-                put("notification", notificationsRepository.findAllByStatus(false));
+                put("notifications", notificationsRepository.findAllByStatus(false));
             }
         };
     }
