@@ -3,6 +3,8 @@ package com.gift_apelsinka.service;
 import com.gift_apelsinka.entity.Pictures;
 import com.gift_apelsinka.repo.PicturesRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -39,26 +41,26 @@ public class PictureService {
     }
 
 
-    public HashMap<String, Object> getAllApelsinkaPicture() {
-        return getAllPicture(1);
+    public HashMap<String, Object> getAllApelsinkaPicture(Pageable pageable) {
+        return getAllPicture(1, pageable);
     }
-    public HashMap<String, Object> getAllOscarPicture() {
-        return getAllPicture(2);
+    public HashMap<String, Object> getAllOscarPicture(Pageable pageable) {
+        return getAllPicture(2, pageable);
     }
-    public HashMap<String, Object> getAllLeraPicture() {
-        return getAllPicture(3);
+    public HashMap<String, Object> getAllLeraPicture(Pageable pageable) {
+        return getAllPicture(3, pageable);
     }
-    public HashMap<String, Object> getAllRylexiumPicture() {
-        return getAllPicture(4);
+    public HashMap<String, Object> getAllRylexiumPicture(Pageable pageable) {
+        return getAllPicture(4, pageable);
     }
-    public HashMap<String, Object> getAllMainPicture() {
-        return getAllPicture(5);
+    public HashMap<String, Object> getAllMainPicture(Pageable pageable) {
+        return getAllPicture(5, pageable);
     }
-    public HashMap<String, Object> getAllLogoPicture() {
-        return getAllPicture(6);
+    public HashMap<String, Object> getAllLogoPicture(Pageable pageable) {
+        return getAllPicture(6, pageable);
     }
 
-    private HashMap<String, Object> getAllPicture(Integer value) {
-        return new HashMap<>() {{  put("picture", picturesRepository.findAllByBelongs(value));  }};
+    private HashMap<String, Object> getAllPicture(Integer value, Pageable pageable) {
+        return new HashMap<>() {{  put("picture", picturesRepository.findAllByBelongs(value, pageable));  }};
     }
 }
