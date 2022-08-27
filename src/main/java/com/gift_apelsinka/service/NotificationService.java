@@ -22,11 +22,19 @@ public class NotificationService {
         List<IpNotifications> ipNotifications = ipNotificationRepository.findAllByAndroidId(androidId);
         List<Notifications> notifications = notificationsRepository.findAllByStatus(false);
         List<Notifications> result = new ArrayList<>();
-        for (Notifications notification : notifications)
-            for (IpNotifications ipNotification : ipNotifications)
-                if (!Objects.equals(notification.getId(), ipNotification.getId()))
-                    result.add(notification);
-
+        for (Notifications notification : notifications) {
+            boolean flag = false;
+            for (IpNotifications ipNotification : ipNotifications) {
+                if (ipNotification.getId().equals(notification.getId())) {
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag) {
+                result.add(notification);
+                ipNotificationRepository.save(new IpNotifications(androidId, notification.getId()));
+            }
+        }
         return new HashMap<>() {
             {
                 put("notifications", result);
@@ -34,7 +42,7 @@ public class NotificationService {
         };
     }
     public HashMap<String, String> setNotificationsStatus(String androidId, String ip, Integer id) {
-        ipNotificationRepository.save(new IpNotifications(androidId, ip, id));
+        ipNotificationRepository.save(new IpNotifications(androidId, id));
         return new HashMap<>() {
             {
                 put("status", "successfully");
