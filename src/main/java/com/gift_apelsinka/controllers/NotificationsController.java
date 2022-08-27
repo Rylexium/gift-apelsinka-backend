@@ -15,13 +15,13 @@ public class NotificationsController {
     private final NotificationService notificationService;
 
     @GetMapping("notifications")
-    public HashMap<String, Object> getNotifications() {
-        return notificationService.getNotification();
+    public HashMap<String, Object> getNotifications(@RequestParam("androidId") String androidId) {
+        return notificationService.getNotification(androidId);
     }
 
     @PostMapping("notifications")
     public HashMap<String, String> setStatusNotifications(@RequestBody RequestChangeStatusNotification request) {
-        return notificationService.setNotificationsStatus(request.getId());
+        return notificationService.setNotificationsStatus(request.getAndroidId(), request.getIp(), request.getId());
     }
 
 }

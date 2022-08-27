@@ -4,5 +4,7 @@ import lombok.Data;
 
 @Data
 public class RequestChangeStatusNotification {
+    private String androidId;
+    private String ip;
     private Integer id;
 }

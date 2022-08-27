@@ -1,4 +1,4 @@
-package com.gift_apelsinka.repo;
+package com.gift_apelsinka.repo.notification;
 
 import com.gift_apelsinka.entity.Notifications;
 import org.springframework.data.jpa.repository.JpaRepository;
