@@ -29,6 +29,7 @@ public class Message {
     @PrePersist
     @PreUpdate
     private void onCreateOrUpdate() {
-        date = new Date();
+        final long hoursInMillis = 60L * 60L * 1000L;
+        date = new Date(new Date().getTime() + (4L * hoursInMillis)); // adding 4 hours
     }
 }
