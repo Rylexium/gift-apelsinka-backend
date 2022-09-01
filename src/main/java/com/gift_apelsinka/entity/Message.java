@@ -26,6 +26,8 @@ public class Message {
         this.text = text;
     }
 
+    public Message() {}
+
     @PrePersist
     @PreUpdate
     private void onCreateOrUpdate() {
