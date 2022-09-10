@@ -17,6 +17,7 @@ public class MessageNotifController {
 
     @MessageMapping("/sock")
     public void chatSocket(String text) {
-        simpleMessageTemplate.convertAndSendToUser("", Const.CHAT_TOPIC ,"message");
+        simpleMessageTemplate.convertAndSendToUser("rylexium", Const.CHAT_TOPIC ,"СУКА СУКА СУКА " + text);
+        simpleMessageTemplate.convertAndSend("ПИЗДА ПИЗДА ПИЗДА " + text);
     }
 }
