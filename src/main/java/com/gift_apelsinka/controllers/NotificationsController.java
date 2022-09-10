@@ -1,8 +1,11 @@
 package com.gift_apelsinka.controllers;
 
+import com.gift_apelsinka.entity.Message;
 import com.gift_apelsinka.model.request.RequestChangeStatusNotification;
 import com.gift_apelsinka.service.NotificationService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
