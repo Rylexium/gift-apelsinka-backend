@@ -1,6 +1,6 @@
 package com.gift_apelsinka.config;
 
-import com.gift_apelsinka.util.Const;
+import com.gift_apelsinka.controllers.socket.util.Const;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
@@ -15,7 +15,6 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     public void configureMessageBroker(MessageBrokerRegistry config) {
         config.enableSimpleBroker(Const.TOPIC);
         config.setApplicationDestinationPrefixes(Const.LINK_CHAT);
-        config.setUserDestinationPrefix("/user");
     }
 
     @Override

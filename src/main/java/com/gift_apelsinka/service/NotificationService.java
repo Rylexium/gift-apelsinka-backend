@@ -48,4 +48,22 @@ public class NotificationService {
             }
         };
     }
+
+    public HashMap<String, String> deleteNotificationById(Integer id) {
+
+       ipNotificationRepository.deleteIpNotificationById(id);
+        return new HashMap<>() {
+            {
+                put("status", "delete successfully");
+            }
+        };
+    }
+    public HashMap<String, String> deleteNotificationAll() {
+        ipNotificationRepository.deleteAll();
+        return new HashMap<>() {
+            {
+                put("status", "delete all successfully");
+            }
+        };
+    }
 }
