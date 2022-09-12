@@ -32,7 +32,6 @@ public class NotificationSocketController {
     @SendToUser("/topic/notifications")
     public void notificationsSocket(String androidId,
                                     Principal principal) {
-        notificationService.deleteNotificationAll();
         subscribers.put(androidId, principal.getName());
         Map<String, Object> list = notificationService.getNotification(androidId);
         simpleMessageTemplate.convertAndSendToUser(
