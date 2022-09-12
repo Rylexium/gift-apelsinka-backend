@@ -19,8 +19,8 @@ public class NotificationsController {
         return notificationService.getNotification(androidId);
     }
     @PostMapping("notifications/delivered")
-    public HashMap<String, String> setDelivered(@RequestBody RequestNotificationDelivered request) {
-        return notificationService.notificationDelivered(request.getAndroidId(), request.getId());
+    public HashMap<String, String> setDeliveredNotification(@RequestBody RequestNotificationDelivered request) {
+        return notificationService.setDeliveredNotification(request.getAndroidId(), request.getId());
     }
 
     @GetMapping("notifications/delete/{id}")

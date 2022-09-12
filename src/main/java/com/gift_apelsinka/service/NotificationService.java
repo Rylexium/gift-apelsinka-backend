@@ -45,8 +45,8 @@ public class NotificationService {
         };
     }
 
-    public HashMap<String, String> notificationDelivered(String androidId, Integer id) {
-        ipNotificationRepository.notificationDelivered(androidId, id);
+    public HashMap<String, String> setDeliveredNotification(String androidId, Integer id) {
+        ipNotificationRepository.setDeliveredNotification(androidId, id);
         return new HashMap<>() {
             {
                 put("status", "successfully");

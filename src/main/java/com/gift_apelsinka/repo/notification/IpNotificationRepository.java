@@ -23,6 +23,6 @@ public interface IpNotificationRepository extends JpaRepository<IpNotifications,
     @Query(value = "UPDATE ip_notifications " +
             "SET \"is_delivered\"=true " +
             "WHERE android_id = :android_id and id = :notification_id", nativeQuery = true)
-    void notificationDelivered(@Param("android_id") String androidId,
-                               @Param("notification_id") Integer notificationId);
+    void setDeliveredNotification(@Param("android_id") String androidId,
+                                  @Param("notification_id") Integer notificationId);
 }
