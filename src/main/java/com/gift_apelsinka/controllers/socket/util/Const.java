@@ -7,5 +7,5 @@ public class Const {
     public static String TOPIC = "/topic";
     public static String NOTIFICATIONS = "notifications";
     public static String NOTIFICATIONS_TOPIC = TOPIC + "/" + NOTIFICATIONS;
-    public static String LINK_CHAT = LINK_API_V1 + "/" + NOTIFICATIONS;
+    public static String LINK_NOTIFICATIONS = LINK_API_V1 + "/" + NOTIFICATIONS;
 }
