@@ -15,10 +15,12 @@ public class IpNotifications implements Serializable {
     private String androidId;
     @Id
     private Integer id;
+    private Boolean isDelivered;
 
     public IpNotifications(String androidId, Integer id) {
         this.androidId = androidId;
         this.id = id;
+        this.isDelivered = false;
     }
     public IpNotifications() {}
 }

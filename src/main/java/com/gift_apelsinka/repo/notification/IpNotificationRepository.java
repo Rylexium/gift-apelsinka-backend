@@ -17,4 +17,12 @@ public interface IpNotificationRepository extends JpaRepository<IpNotifications,
     @Modifying(clearAutomatically = true)
     @Query(value = "delete from ip_notifications where id=:value", nativeQuery = true)
     void deleteIpNotificationById(@Param("value") Integer id);
+
+    @Transactional
+    @Modifying(clearAutomatically = true)
+    @Query(value = "UPDATE ip_notifications " +
+            "SET \"is_delivered\"=true " +
+            "WHERE android_id = :android_id and id = :notification_id", nativeQuery = true)
+    void notificationDelivered(@Param("android_id") String androidId,
+                               @Param("notification_id") Integer notificationId);
 }

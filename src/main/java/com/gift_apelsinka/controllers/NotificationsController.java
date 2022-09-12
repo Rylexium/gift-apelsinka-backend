@@ -1,6 +1,6 @@
 package com.gift_apelsinka.controllers;
 
-import com.gift_apelsinka.model.request.RequestChangeStatusNotification;
+import com.gift_apelsinka.model.request.RequestNotificationDelivered;
 import com.gift_apelsinka.service.NotificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +18,10 @@ public class NotificationsController {
     public HashMap<String, Object> getNotifications(@RequestParam("androidId") String androidId) {
         return notificationService.getNotification(androidId);
     }
+    @PostMapping("notifications/delivered")
+    public HashMap<String, String> setDelivered(@RequestBody RequestNotificationDelivered request) {
+        return notificationService.notificationDelivered(request.getAndroidId(), request.getId());
+    }
 
     @GetMapping("notifications/delete/{id}")
     public HashMap<String, String> deleteFromIpNotifications(@PathVariable("id") Integer id) {
@@ -26,10 +30,5 @@ public class NotificationsController {
     @GetMapping("notifications/delete/all")
     public HashMap<String, String> deleteAllFromIpNotifications() {
         return notificationService.deleteNotificationAll();
-    }
-
-    @PostMapping("notifications")
-    public HashMap<String, String> setStatusNotifications(@RequestBody RequestChangeStatusNotification request) {
-        return notificationService.setNotificationsStatus(request.getAndroidId(), request.getIp(), request.getId());
     }
 }

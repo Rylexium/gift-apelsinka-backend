@@ -13,7 +13,7 @@ public class Runner implements ApplicationRunner {
     private final NotificationRunner notificationRunner;
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
+    public void run(ApplicationArguments args) {
         notificationRunner.scheduleCheckNotifications();
     }
 }

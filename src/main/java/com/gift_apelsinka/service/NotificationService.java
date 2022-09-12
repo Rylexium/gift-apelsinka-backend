@@ -19,12 +19,16 @@ public class NotificationService {
 
     public HashMap<String, Object> getNotification(String androidId) {
         List<IpNotifications> ipNotifications = ipNotificationRepository.findAllByAndroidId(androidId);
-        List<Notifications> notifications = notificationsRepository.findAllByStatus(false);
+        List<Notifications> notifications = notificationsRepository.findAllByStatus(true);
         List<Notifications> result = new ArrayList<>();
         for (Notifications notification : notifications) {
+            if(!notification.getStatus()) continue; //неактивный статус в базе уведомлений
+
             boolean flag = false;
+
             for (IpNotifications ipNotification : ipNotifications) {
-                if (ipNotification.getId().equals(notification.getId())) {
+                // если это уведомление уже есть и оно было доставлено, то идём дальше
+                if (ipNotification.getId().equals(notification.getId()) && ipNotification.getIsDelivered()) {
                     flag = true;
                     break;
                 }
@@ -40,8 +44,9 @@ public class NotificationService {
             }
         };
     }
-    public HashMap<String, String> setNotificationsStatus(String androidId, String ip, Integer id) {
-        ipNotificationRepository.save(new IpNotifications(androidId, id));
+
+    public HashMap<String, String> notificationDelivered(String androidId, Integer id) {
+        ipNotificationRepository.notificationDelivered(androidId, id);
         return new HashMap<>() {
             {
                 put("status", "successfully");
